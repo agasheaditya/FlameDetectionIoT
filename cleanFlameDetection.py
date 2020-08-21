@@ -8,7 +8,7 @@ GPIO.setup(21, GPIO.OUT)
 GPIO.setup(23, GPIO.OUT)
 # create a new cam object
 cap = cv2.VideoCapture(0)
-flame_cascade = cv2.CascadeClassifier("cascade_retrain_flame.xml")
+flame_cascade = cv2.CascadeClassifier("NewFlameCascade.xml")# cascade_retrain_flame.xml
 
 while True:
     # read the image from the cam
