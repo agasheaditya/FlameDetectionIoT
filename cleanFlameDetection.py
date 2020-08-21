@@ -5,6 +5,7 @@ import time
 #setup GPIO mode to broadcom chipset and set the status of pin as a output pin since LED is a o/p device
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
 # create a new cam object
 cap = cv2.VideoCapture(0)
 flame_cascade = cv2.CascadeClassifier("cascade_retrain_flame.xml")
@@ -19,10 +20,13 @@ while True:
         cv2.putText(image,"Flame",(x,y-5),cv2.FONT_HERSHEY_COMPLEX_SMALL,1,2)
     #print("No Flame")
     if len(faces) == 0:
-        print("NO FLAME")
+        print("NO FLAME,Beep")
 	GPIO.output(21, GPIO.HIGH)
+	GPIO.output(23, GPIO.HIGH)
 	time.sleep(0.5)
+	#print("Flame, No Beep")
 	GPIO.output(21, GPIO.LOW)
+	GPIO.output(23, GPIO.LOW)
 	time.sleep(0.5)
 	continue
     cv2.imshow("image", image)
