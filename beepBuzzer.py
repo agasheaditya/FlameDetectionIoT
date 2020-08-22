@@ -2,10 +2,9 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 GPIO.setmode(GPIO.BCM)
+buzzer = 23  # setting pin GPIO 23 as a constant to the variable
+GPIO.setup(buzzer, GPIO.OUT) # setting pin 23 as a o/p pin
 
-buzzer = 23
-
-GPIO.setup(buzzer, GPIO.OUT)
 try:
  while True:
   GPIO.output(buzzer, GPIO.HIGH)
